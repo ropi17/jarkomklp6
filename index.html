@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kelompok - Jaringan Komputer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-green: #0b4619;
+            /* Universitas Hamzanwadi Green */
+            --accent-gold: #f4c430;
+            /* Gold/Yellow from Logo */
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --bg-light: #f0fdf4;
+            /* Very light green tint */
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Background Decoration */
+        .background-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 10% 20%, rgba(11, 70, 25, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(244, 196, 48, 0.1) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .uni-logo {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .uni-logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .header-text h1 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .course-info {
+            border-top: 2px solid var(--accent-gold);
+            padding-top: 1rem;
+            display: inline-block;
+        }
+
+        .course-info p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin: 0.2rem 0;
+        }
+
+        .subject {
+            font-weight: 600;
+            color: var(--primary-green) !important;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        /* Member Card */
+        .member-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-wrapper {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold));
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            background-color: #eee;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-size: 1.25rem;
+        }
+
+        .member-info .nim {
+            display: block;
+            color: #666;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background-color: rgba(11, 70, 25, 0.1);
+            color: var(--primary-green);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .main-header {
+                flex-direction: row;
+                text-align: left;
+                padding: 3rem;
+                justify-content: center;
+                gap: 3rem;
+            }
+
+            .course-info {
+                border-top: none;
+                border-left: 2px solid var(--accent-gold);
+                padding-top: 0;
+                padding-left: 1.5rem;
+            }
+
+            .logo-container {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-decor"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="main-header">
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Logo Universitas Hamzanwadi" class="uni-logo">
+            </div>
+            <div class="header-text">
+                <h1>UNIVERSITAS HAMZANWADI</h1>
+                <div class="course-info">
+                    <p class="subject">Mata Kuliah: Jaringan Komputer</p>
+                    <p class="lecturer">Dosen Pengampu: Harianto S.Kom M.Kom</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Team Section -->
+        <main class="team-section">
+            <h2 class="section-title">Anggota Kelompok</h2>
+
+            <div class="team-grid">
+                <!-- Member 1: Indra Wijaya -->
+                <div class="member-card">
+                    <div class="image-wrapper">
+                        <img src="assets/indra.jpg" alt="Indra Wijaya">
+                    </div>
+                    <div class="member-info">
+                        <h3>Indra Wijaya</h3>
+                        <span class="nim">NIM: 240602036</span>
+                        <div class="role-badge">Anggota</div>
+                    </div>
+                </div>
+
+                <!-- Member 2: Dimas Zuhri -->
+                <div class="member-card">
+                    <div class="image-wrapper">
+                        <img src="assets/dimas.jpg" alt="Dimas Zuhri">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dimas Zuhri</h3>
+                        <span class="nim">NIM: 240602043</span>
+                        <div class="role-badge">Anggota</div>
+                    </div>
+                </div>
+
+                <!-- Member 3: Devi Antika -->
+                <div class="member-card">
+                    <div class="image-wrapper">
+                        <img src="assets/devi.jpg" alt="Devi Antika">
+                    </div>
+                    <div class="member-info">
+                        <h3>Devi Antika</h3>
+                        <span class="nim">NIM: 240602033</span>
+                        <div class="role-badge">Anggota</div>
+                    </div>
+                </div>
+
+                <!-- Member 4: Ropiza'ul H.A -->
+                <div class="member-card">
+                    <div class="image-wrapper">
+                        <img src="assets/ropizaul.jpg" alt="Ropiza'ul H.A">
+                    </div>
+                    <div class="member-info">
+                        <h3>Ropiza'ul H.A</h3>
+                        <span class="nim">NIM: 240602050</span>
+                        <div class="role-badge">Anggota</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Jaringan Komputer - Universitas Hamzanwadi</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
